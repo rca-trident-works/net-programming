@@ -1,5 +1,7 @@
 #include <stdio.h>
 
+void func_str(char[]);
+
 int main(int argc, char *argv[]) {
   char str[] = "Hello, World";
 
