@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-void enc_ceasar(char str[]);
+void enc_ceasar(char[]);
 
 int main(int argc, char *argv[]) {
   char str[80];
