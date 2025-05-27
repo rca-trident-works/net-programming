@@ -3,11 +3,11 @@
 int main(int argc, char *argv[]) {
   char str1[] = "Hello";
   char result[100];
-  // str1をループで１個ずつ代入
+
   // with for
-  for (int i = 0; str1[i] != '\0'; i++) {
-    result[i] = str1[i];
-  }
+  /* for (int i = 0; str1[i] != '\0'; i++) { */
+  /*   result[i] = str1[i]; */
+  /* } */
 
   // with while
   int i = 0;
@@ -19,6 +19,4 @@ int main(int argc, char *argv[]) {
   printf("result: %s\n", result);
 
   return 0;
-
-  // use while
 }
