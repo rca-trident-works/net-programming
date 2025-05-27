@@ -1,5 +1,5 @@
-#include <stdio.h>
 #include <stdbool.h>
+#include <stdio.h>
 
 int main(int argc, char *argv[]) {
   char str1[] = "ABC";
@@ -22,4 +22,3 @@ int main(int argc, char *argv[]) {
 
   return 0;
 }
-
