@@ -11,22 +11,20 @@ void print_usage(const char *prog_name) {
 
 int main(int argc, char const *argv[]) {
   // aなら func_a, bなら func_b を呼び出す
-  if (argc < 2) {
+  // Validate
+  if (argc != 2 || argv[1][1] != '\0') {
     print_usage(argv[0]);
     return 1;
-  } else if (argc > 2) {
-    print_usage(argv[0]);
-    return 1;
-  } else if (argv[1] == NULL) {
-    print_usage(argv[0]);
-    return 1;
-  } else if (argv[1][0] == 'a' && argv[1][1] == '\0') {
+  }
+  // Exec
+  switch (argv[1][0]) {
+  case 'a':
     func_a();
     return 0;
-  } else if (argv[1][0] == 'b' && argv[1][1] == '\0') {
+  case 'b':
     func_b();
     return 0;
-  } else {
+  default:
     print_usage(argv[0]);
     return 1;
   }
