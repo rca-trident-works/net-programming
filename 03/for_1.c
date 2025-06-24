@@ -8,4 +8,6 @@ int main(int argc, char *argv[]) {
   }
 
   printf("for文の後に実行されます。\n");
+
+  return 0;
 }
