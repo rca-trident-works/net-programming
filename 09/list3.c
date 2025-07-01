@@ -19,21 +19,28 @@ int main(int argc, char const *argv[]) {
   head = createNode(100);
   display(head);
 
+  printf("== append ==\n");
+
   data = createNode(200);
   append(head, data);
 
   data = createNode(300);
   append(head, data);
+  display(head);
+
+  printf("== prepend ==\n");
 
   data = createNode(400);
   prepend(&head, data);
+  display(head);
+
+  printf("== insert ==\n");
 
   data = createNode(500);
   insert(&head, data, 300);
 
   data = createNode(600);
   insert(&head, data, 999);
-
   display(head);
 
   return 0;
