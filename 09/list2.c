@@ -9,7 +9,7 @@ typedef struct Node {
 Node *createNode(int);
 void append(Node *, Node *);
 void display(Node *);
-Node* prepend(Node *, Node *);
+void prepend(Node **, Node *);
 
 int main(int argc, char const *argv[]) {
   Node *head = NULL;
@@ -25,7 +25,7 @@ int main(int argc, char const *argv[]) {
   append(head, data);
 
   data = createNode(400);
-  head = prepend(head, data);
+  prepend(&head, data);
 
   display(head);
 
@@ -47,9 +47,9 @@ void append(Node *head, Node *data) {
   current->next = data;
 }
 
-Node* prepend(Node *head, Node *data) {
-  data->next = head;
-  return data;
+void prepend(Node **head, Node *data) {
+  data->next = *head;
+  *head = data;
 }
 
 void display(Node *head) {
