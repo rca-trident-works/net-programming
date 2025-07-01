@@ -62,8 +62,6 @@ void prepend(Node **head, Node *data) {
 void insert(Node **head, Node *data, int marker) {
   Node *current = *head;
   Node *prev = NULL;
-  // dataがmarkerと一致したらその後に挿入
-  // markerが見つからなかった場合は末尾に挿入
   while (current != NULL && current->data != marker) {
     prev = current;
     current = current->next;
