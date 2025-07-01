@@ -17,12 +17,13 @@ int main(int argc, char const *argv[]) {
   head = createNode(100);
   display(head);
 
+  printf("== append ==\n");
+
   data = createNode(200);
   append(head, data);
 
   data = createNode(300);
   append(head, data);
-
   display(head);
 
   return 0;
