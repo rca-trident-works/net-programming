@@ -3,7 +3,7 @@
 
 typedef struct Student {
   int id;
-  char name[20];
+  char *name;
   int jap_score;
   int mat_score;
   int eng_score;
@@ -34,7 +34,25 @@ void display(Student *head) {
   printf("\n");
 }
 
+Student *createStudent(int id, char name[], int jap_score, int mat_score, int eng_score) {
+  Student *newNode = (Student *)malloc(sizeof(Student));
 
+  newNode->id = id;
+  newNode->name = name;
+  newNode->jap_score = jap_score;
+  newNode->mat_score = mat_score;
+  newNode->eng_score = eng_score;
+
+  return newNode;
+}
+
+void append(Student *head, Student *newNode) {
+  Student *current = head;
+  if (current->next != NULL) {
+    current = current->next;
+  }
+  current->next = newNode;
+}
 
 int main(int argc, char const *argv[]) {
   Student *head, *data;
