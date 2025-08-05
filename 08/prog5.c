@@ -8,8 +8,6 @@ typedef struct {
   float price;
 } Book;
 
-// 本の情報をユーザーに入力させる
-
 int main() {
   Book book;
 
@@ -36,7 +34,6 @@ int main() {
   printf("出版年: %d\n", book.year);
   /* printf("価格: %d円\n", book.price); */
   printf("価格: %.2f円\n", book.price);
-
 
   return 0;
 }
