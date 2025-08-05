@@ -12,16 +12,14 @@ typedef struct Student {
   struct Student *next;
 } Student;
 
-#define 国語 "jap_score"
-#define 数学 "mat_score"
-#define 英語 "eng_score"
+typedef enum { JAPANESE, MATH, ENGLISH } Subject;
 
 Student *createStudent(int id, char name[], int jap_score, int mat_score,
                        int eng_score);
 void append(Student *head, Student *newNode);
 void display(Student *head);
 void total(Student *head);
-Student *findMax(Student *head, char subject[]);
+Student *findMax(Student *head, Subject subject);
 void display_one(Student *head);
 
 void display_one(Student *student) {
@@ -36,47 +34,21 @@ void display_one(Student *student) {
   printf("\n");
 }
 
-Student *findMax(Student *head, char subject[]) {
-  Student *current = head;
-  Student *maxStudent = head;
-  int maxScore = 0;
-
-  if (head == NULL)
+Student *findMax(Student *head, Subject subject) {
+  if (!head)
     return NULL;
-
-  if (strcmp(subject, "jap_score") == 0) {
-    maxScore = head->jap_score;
-    current = head->next;
-    while (current != NULL) {
-      if (current->jap_score > maxScore) {
-        maxScore = current->jap_score;
-        maxStudent = current;
-      }
-      current = current->next;
-    }
-  } else if (strcmp(subject, "mat_score") == 0) {
-    maxScore = head->mat_score;
-    current = head->next;
-    while (current != NULL) {
-      if (current->mat_score > maxScore) {
-        maxScore = current->mat_score;
-        maxStudent = current;
-      }
-      current = current->next;
-    }
-  } else if (strcmp(subject, "eng_score") == 0) {
-    maxScore = head->eng_score;
-    current = head->next;
-    while (current != NULL) {
-      if (current->eng_score > maxScore) {
-        maxScore = current->eng_score;
-        maxStudent = current;
-      }
-      current = current->next;
-    }
+  Student *best = head;
+  for (Student *cur = head->next; cur; cur = cur->next) {
+    int curScore = (subject == JAPANESE) ? cur->jap_score
+                   : (subject == MATH)   ? cur->mat_score
+                                      : cur->eng_score;
+    int bestScore = (subject == JAPANESE) ? best->jap_score
+                    : (subject == MATH)   ? best->mat_score
+                                       : best->eng_score;
+    if (curScore > bestScore)
+      best = cur;
   }
-
-  return maxStudent;
+  return best;
 }
 
 void total(Student *head) {
@@ -150,13 +122,13 @@ int main(int argc, char const *argv[]) {
   total(head);
 
   printf("国語の最高点\n");
-  display_one(findMax(head, 国語));
+  display_one(findMax(head, JAPANESE));
 
   printf("数学の最高点\n");
-  display_one(findMax(head, 数学));
+  display_one(findMax(head, MATH));
 
   printf("英語の最高点\n");
-  display_one(findMax(head, 英語));
+  display_one(findMax(head, ENGLISH));
 
   return 0;
 }
